@@ -54,7 +54,7 @@ const Trainer = ({ trainType, setTrainType }) => {
     return () => {
       clearInterval(timerId)
     }
-  }, [timerStarted, time])
+  }, [timerStarted, time, highScore, score])
 
   const handleMainMenuClick = () => {
     setTrainType(null)
@@ -110,7 +110,7 @@ const Trainer = ({ trainType, setTrainType }) => {
       </div>
       <div className="staff" style={{ borderColor: answer.correct ? '#75FF33': '' }}>
         <div className="staff-body">
-          <img src={note.noteType} style={{top: note.top}}/>
+          <img alt="staff" src={note.noteType} style={{top: note.top}}/>
         </div>
       </div>
       {!timerStarted && timerType && (<button onClick={toggleTimer}>Start Timer</button>)}
