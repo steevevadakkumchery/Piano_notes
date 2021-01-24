@@ -1,8 +1,6 @@
 import React from 'react'
-import { trebleClefNotes } from '../const'
-import generateQuestion from '../helpers/generateQuestion'
 
-const TextInput = ({ answer, note, setNote, setAnswer, inputTextBoxRef, setScore, handleCorrectAnswer }) => {
+const TextInput = ({ answer, note, setAnswer, inputTextBoxRef, handleCorrectAnswer }) => {
   return (
     <input
       ref={inputTextBoxRef}

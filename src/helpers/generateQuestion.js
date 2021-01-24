@@ -2,8 +2,8 @@ import { CLEF_TYPE } from '../const'
 
 const generateQuestion = ({ note, clefType }) => {
   let noteNumber;
-  let min = 0
-  let max = 12
+  let min;
+  let max;
 
   switch(clefType) {
     case CLEF_TYPE.TREBLE_CLEF:
@@ -17,6 +17,10 @@ const generateQuestion = ({ note, clefType }) => {
     case CLEF_TYPE.BOTH:
       min = 0;
       max = 25;
+      break
+    default:
+      min = 0
+      max = 12
   }
 
   do {
