@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-timer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton-container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.staff {
+  border: 10px solid;
+  background-color: white;
+  padding: 80px 10px;
+  transform: scale(0.5);
+  margin-bottom: -140px;
+  margin-top: -145px;
+}
+
+.staff-body {
+  background-image: url(../../assets/staff.jpg);
+  background-repeat: no-repeat;
+  height: 420px; /* 420px */
+  width: 410px;
+}
+
+.staff-body img {
+  position: relative;
+}
+
+.answer-input {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  font-size: 50px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.input-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.input-buttons > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 400px) {
+  .staff {
+    transform:scale(0.8);
+    margin-bottom: -40px;
+    margin-top: -45px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .staff {
+    margin-bottom: -40px;
+  }
+}
