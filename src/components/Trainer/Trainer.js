@@ -22,7 +22,7 @@ const Trainer = ({ trainType, handleMainMenuClick, username }) => {
   const [answer, setAnswer] = useState({ correct: false, text: ''})
   const [inputType, setInputType] = useState(INPUT_TYPE.TEXT)
   const [timerStarted, setTimerStarted] = useState(false)
-  const [time, setTime] = useState(10)
+  const [time, setTime] = useState(60)
   const [score, setScore] = useState(0)
   const [highScore, setHighScore] = useState(0)
   let timerId;
@@ -88,7 +88,7 @@ const Trainer = ({ trainType, handleMainMenuClick, username }) => {
     if(timerStarted) {
       clearTimeout(timerId)
     } else { 
-      setTime(10)
+      setTime(60)
       setScore(0)
     }
     setTimerStarted((prev) => !prev)
