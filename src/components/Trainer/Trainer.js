@@ -7,7 +7,7 @@ import formatTime from '../../helpers/formatTime'
 import generateQuestion from '../../helpers/generateQuestion'
 import './Trainer.css'
 
-const Trainer = ({ trainType, setTrainType }) => {
+const Trainer = ({ trainType, handleMainMenuClick, username }) => {
   const timerType = trainType.includes(GAME_MODE.TIME_CHALLENGE)
   let initialNote = clefNotes[0]
   let clefType = CLEF_TYPE.TREBLE_CLEF
@@ -28,6 +28,32 @@ const Trainer = ({ trainType, setTrainType }) => {
   let timerId;
   const inputTextBoxRef = useRef()
 
+  async function postHighScore(url = '', data = {}) {
+    // Default options are marked with *
+    const newdata = JSON.stringify(data)
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'omit', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: newdata // body data type must match "Content-Type" header
+    });
+  }
+
+  const handleNewHighScore = (score) => {
+    postHighScore('http://testapi-steeve.herokuapp.com/save-highscore', {
+      newHighScore: [{
+        name: username,
+        score: score
+      }]
+    })
+  }
 
   useEffect(() => {
     setTimeout(() => {
@@ -47,18 +73,16 @@ const Trainer = ({ trainType, setTrainType }) => {
     } else if(!timerStarted || time === 0) {
       clearInterval(timerId)
       setTimerStarted(false)
+
       if(score > highScore) {
         setHighScore(score)
+        handleNewHighScore(score)
       }
     }
     return () => {
       clearInterval(timerId)
     }
   }, [timerStarted, time, highScore, score])
-
-  const handleMainMenuClick = () => {
-    setTrainType(null)
-  }
 
   const toggleTimer = () => {
     if(timerStarted) {
