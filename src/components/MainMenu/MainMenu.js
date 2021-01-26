@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GAME_MODE, CLEF_TYPE } from '../../const'
 
-const MainMenu = ({ setTrainType }) => {
+const MainMenu = ({ setTrainType, handleHighScores }) => {
   const [ gameMode, setGameMode ] = useState(null)
   const [ clefType, setClefType ] = useState(null)
 
@@ -20,11 +20,12 @@ const MainMenu = ({ setTrainType }) => {
 
   let gameOptions = null;
   let clefOptions = null;
+  let highScores = null;
 
   if(!gameMode) {
     gameOptions = (
       <div className='list'>
-        {[TIME_CHALLENGE, PRACTICE].map((mode) => (
+        {[TIME_CHALLENGE, PRACTICE,].map((mode) => (
           <button key={mode} onClick={() => handleGameOption(mode)}>{mode}</button>
         ))}
       </div>
@@ -41,11 +42,20 @@ const MainMenu = ({ setTrainType }) => {
     )
   }
 
+  if(!gameMode) {
+    highScores = (
+      <div className='list'>
+        <button onClick={handleHighScores}>High Scores</button>
+      </div>
+    )
+  }
+
   return (
     <div className='main-menu'>
       <h1>Sheet reading trainer</h1>
       {gameOptions}
       {clefOptions}
+      {highScores}
     </div>
   )
 }

@@ -46,5 +46,20 @@ button {
   cursor: pointer;
 }
 
+.score-line {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
+.name-box { 
+  height: 56px;
+  width: 170px;
+  font-size: 20px;
+}
 
+.name-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
